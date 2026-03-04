@@ -1,17 +1,9 @@
 import React from "react";
-import { Stack } from "@mui/material";
 
 import { categories } from "../utils/constants";
 
 const Categories = ({ selectedCategory, setSelectedCategory }) => (
-  <Stack
-    direction="row"
-    sx={{
-      overflowY: "auto",
-      height: { sx: "auto", md: "95%" },
-      flexDirection: { md: "column" },
-    }}
-  >
+  <div className="sidebar-container">
     {categories.map((category) => (
       <button
         className="category-btn"
@@ -22,7 +14,7 @@ const Categories = ({ selectedCategory, setSelectedCategory }) => (
         }}
         key={category.name}
       >
-        <span style={{ color: category.name === selectedCategory ? "white" : "red", marginRight: "15px" }}>
+        <span style={{ color: category.name === selectedCategory ? "white" : "red", marginRight: "15px", fontSize: "18px" }}>
           {category.icon}
         </span>
         <span style={{ opacity: category.name === selectedCategory ? "1" : "0.8" }}>
@@ -30,7 +22,7 @@ const Categories = ({ selectedCategory, setSelectedCategory }) => (
         </span>
       </button>
     ))}
-  </Stack>
+  </div>
 );
 
 export default Categories;

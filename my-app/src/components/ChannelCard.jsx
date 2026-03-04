@@ -1,42 +1,26 @@
-import React from 'react';
-import { Box, CardContent, CardMedia, Typography } from '@mui/material';
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { Link } from 'react-router-dom';
-import { demoProfilePicture } from '../utils/constants';
+import React from "react";
+import { Link } from "react-router-dom";
+
+import { demoProfilePicture } from "../utils/constants";
 
 const ChannelCard = ({ channelDetail, marginTop }) => (
-  <Box
-    sx={{
-      boxShadow: 'none',
-      borderRadius: '20px',
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      width: { xs: '356px', md: '320px' },
-      height: '326px',
-      margin: 'auto',
-      marginTop,
-    }}
-  >
-    <Link to={`/channel/${channelDetail?.id?.channelId}`}>
-      <CardContent sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', textAlign: 'center', color: '#fff' }}>
-        <CardMedia
-          image={channelDetail?.snippet?.thumbnails?.high?.url || demoProfilePicture}
-          alt={channelDetail?.snippet?.title}
-          sx={{ borderRadius: '50%', height: '180px', width: '180px', mb: 2, border: '1px solid #e3e3e3' }}
-        />
-        <Typography variant="h6">
-          {channelDetail?.snippet?.title}{' '}
-          <CheckCircleIcon sx={{ fontSize: '14px', color: 'gray', ml: '5px' }} />
-        </Typography>
-        {channelDetail?.statistics?.subscriberCount && (
-          <Typography sx={{ fontSize: '15px', fontWeight: 500, color: 'gray' }}>
-            {parseInt(channelDetail?.statistics?.subscriberCount).toLocaleString('en-US')} Subscribers
-          </Typography>
-        )}
-      </CardContent>
+  <div className="channel-card-wrap" style={{ marginTop: marginTop || 0 }}>
+    <Link to={`/channel/${channelDetail?.id?.channelId || channelDetail?.id || ""}`} className="channel-card-link">
+      <img
+        src={channelDetail?.snippet?.thumbnails?.high?.url || demoProfilePicture}
+        alt={channelDetail?.snippet?.title}
+        className="channel-avatar"
+      />
+      <h3 className="channel-name">
+        {channelDetail?.snippet?.title} <span className="verified-mark">✔</span>
+      </h3>
+      {channelDetail?.statistics?.subscriberCount && (
+        <p className="channel-subs">
+          {parseInt(channelDetail.statistics.subscriberCount, 10).toLocaleString("en-US")} subscribers
+        </p>
+      )}
     </Link>
-  </Box>
+  </div>
 );
 
 export default ChannelCard;
