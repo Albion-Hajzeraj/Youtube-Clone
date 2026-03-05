@@ -3,7 +3,8 @@ import React from "react";
 import { ChannelCard, Loader, VideoCard } from "./";
 
 const Videos = ({ videos, direction }) => {
-  if (!videos?.length) return <Loader />;
+  if (videos === null) return <Loader />;
+  if (!videos.length) return <p className="empty-state">No videos found for this view.</p>;
 
   return (
     <div className={`videos-grid ${direction === "column" ? "videos-column" : ""}`}>

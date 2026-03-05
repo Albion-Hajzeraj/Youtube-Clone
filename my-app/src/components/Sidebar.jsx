@@ -6,18 +6,14 @@ const Categories = ({ selectedCategory, setSelectedCategory }) => (
   <div className="sidebar-container">
     {categories.map((category) => (
       <button
-        className="category-btn"
+        className={`category-btn ${category.name === selectedCategory ? "active" : ""}`}
         onClick={() => setSelectedCategory(category.name)}
-        style={{
-          background: category.name === selectedCategory && "#FC1503",
-          color: "white",
-        }}
         key={category.name}
       >
-        <span style={{ color: category.name === selectedCategory ? "white" : "red", marginRight: "15px", fontSize: "18px" }}>
+        <span className="category-icon">
           {category.icon}
         </span>
-        <span style={{ opacity: category.name === selectedCategory ? "1" : "0.8" }}>
+        <span className="category-label">
           {category.name}
         </span>
       </button>

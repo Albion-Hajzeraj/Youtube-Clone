@@ -1,12 +1,15 @@
 import { Link } from "react-router-dom";
 
-import { logo } from "../utils/constants";
 import { SearchBar } from "./";
 
 const Navbar = () => (
   <header className="navbar">
-    <Link to="/" style={{ display: "flex", alignItems: "center" }}>
-      <img src={logo} alt="logo" height={45} />
+    <Link to="/" className="brand-link" aria-label="WatchGrid Home">
+      <span className="brand-badge">WG</span>
+      <div>
+        <p className="brand-name">WatchGrid</p>
+        <p className="brand-tagline">Stream discovery engine</p>
+      </div>
     </Link>
     <SearchBar />
   </header>

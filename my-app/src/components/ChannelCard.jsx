@@ -12,7 +12,7 @@ const ChannelCard = ({ channelDetail, marginTop }) => (
         className="channel-avatar"
       />
       <h3 className="channel-name">
-        {channelDetail?.snippet?.title} <span className="verified-mark">✔</span>
+        {channelDetail?.snippet?.title} <span className="verified-mark">Verified</span>
       </h3>
       {channelDetail?.statistics?.subscriberCount && (
         <p className="channel-subs">

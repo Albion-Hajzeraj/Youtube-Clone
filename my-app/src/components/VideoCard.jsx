@@ -20,11 +20,11 @@ const VideoCard = ({ video: { id: { videoId } = {}, snippet = {} } = {} }) => (
     </Link>
     <div className="video-card-content">
       <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
-        <h3 className="video-title">{(snippet?.title || demoVideoTitle).slice(0, 60)}</h3>
+        <h3 className="video-title">{(snippet?.title || demoVideoTitle).slice(0, 70)}</h3>
       </Link>
       <Link to={snippet?.channelId ? `/channel/${snippet.channelId}` : demoChannelUrl}>
         <p className="video-channel">
-          {snippet?.channelTitle || demoChannelTitle} <span className="verified-mark">✔</span>
+          {snippet?.channelTitle || demoChannelTitle} <span className="verified-mark">Verified</span>
         </p>
       </Link>
     </div>
